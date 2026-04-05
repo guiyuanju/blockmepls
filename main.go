@@ -5,6 +5,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -196,6 +197,15 @@ func flushDNS() error {
 	}
 }
 
+func serve() {
+	root := func(w http.ResponseWriter, req *http.Request) {
+		fmt.Fprintf(w, "Blocked!\n")
+	}
+
+	http.HandleFunc("/", root)
+	http.ListenAndServe("", nil)
+}
+
 // type definition for comma separated flag
 type stringSlice []string
 
@@ -211,8 +221,10 @@ func (s *stringSlice) Set(value string) error {
 func main() {
 	var sites stringSlice
 	var reset bool
+	var server bool
 	flag.Var(&sites, "sites", "the sites to be blocked, comma separated")
 	flag.BoolVar(&reset, "reset", false, "reset the block list")
+	flag.BoolVar(&server, "server", false, "start a server for better interaction")
 
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage of blockmepls:\n")
@@ -260,7 +272,13 @@ func main() {
 		}
 
 		fmt.Printf("blocked: %s\n", sites.String())
-		fmt.Println("Please restart your browser to see the effect")
+		fmt.Println("please restart your browser to see the effect")
+
+		if server {
+			fmt.Println("serving on " + GATE)
+			serve()
+		}
+
 		return
 	}
 }
