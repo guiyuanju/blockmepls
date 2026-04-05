@@ -15,10 +15,10 @@ go install github.com/guiyuanju/blockmepls@latest
 
 ```bash
 # block
-blockmepls -sites="x.com,instagram.com"
+sudo blockmepls -sites="x.com,instagram.com"
 
 # reset
-blockmepls -reset
+sudo blockmepls -reset
 ```
 
 ```
