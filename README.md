@@ -22,5 +22,4 @@ Usage of blockmepls:
         reset the block list
   -sites value
         the sites to be blocked, comma separated
-exit status 1
 ```
