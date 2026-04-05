@@ -1,9 +1,14 @@
 # Block Me PLS
 
+A cross platform utility to block websites to stay focused.
+Works on MacOS, Windows and Linux.
+
+**Only tested on MacOS. Windows and Linux not tested, if you found any problem, please open a issue!**
+
 ## Installation
 
 ```bash
-go install https://github.com/guiyuanju/blockmepls
+go install github.com/guiyuanju/blockmepls@latest
 ```
 
 ## Usage
