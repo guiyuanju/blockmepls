@@ -7,6 +7,8 @@ Works on MacOS, Windows and Linux.
 
 ## Installation
 
+You need to have Go installed first for building the binary.
+
 ```bash
 go install github.com/guiyuanju/blockmepls@latest
 ```
